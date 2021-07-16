@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="None">
+        
+        <link rel="canonical" href="https://example.com/">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>Hello PLUS</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="js/jquery-1.10.2.min.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/c#.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">Hello PLUS</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem active">
+                                <a href="." class="nav-link">首页</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="about/" class="nav-link">测试页</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="about/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">点的分布算法</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_4" class="nav-link">获取内部点</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_7" class="nav-link">查找任意轴向重叠面</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#vex" class="nav-link">VEX 自定义函数</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="2"><a href="#_10" class="nav-link">提取指定面</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h2 id="_1">点的分布算法</h2>
+<hr />
+<h3 id="_2">实现结果</h3>
+<p><img alt="" src="imgs/01_001.png" /></p>
+<h3 id="_3">算法</h3>
+<ol>
+<li>点的位置P除以x，假设x=2</li>
+<li>结果取整，可四舍五入</li>
+<li>得到的结果在乘x ，就可以实现效果</li>
+</ol>
+<p><img alt="" src="imgs/01_003.png" /></p>
+<pre><code class="language-c#">// VEX code
+
+@P.x = rint(@P.x/2)*2;
+@P.y = rint(@P.y/3)*3;
+@P.z = rint(@P.z/2)*2;
+</code></pre>
+<h2 id="_4">获取内部点</h2>
+<hr />
+<h3 id="_5">实现结果</h3>
+<ul>
+<li>获取红圈内点</li>
+</ul>
+<p><img alt="" src="imgs/01_002.png" /></p>
+<h3 id="_6">算法</h3>
+<blockquote>
+<p>前提:</p>
+<p>上个步骤中，点在x,z轴间距时2，在y轴间距是3</p>
+</blockquote>
+<p><img alt="" src="imgs/01_005.png" />
+<center style="font-size:10px;color:#C0C0C0;text-decoration:underline">图中反应的是点云查找结果，所以显示点会多一个</center></p>
+<p>如果查找范围是<code>2.1</code>，可以按下面几种情况考虑，如果在houdini使用点云查找，因为会找到自身点，所以返回的点会多1</p>
+<ul>
+<li>点在立方体顶点，会有3个相邻点</li>
+<li>点在立方体边上，会有4个相邻点</li>
+<li>点在立方体面上或者内部，会有5个相邻点</li>
+</ul>
+<p><strong>根据相邻点数量，就能提取到我们想要的任意点</strong></p>
+<p><img alt="" src="imgs/01_006.png" />
+<center style="font-size:10px;color:#C0C0C0;text-decoration:underline">图中反应的是点云查找结果，所以显示点会多一个</center></p>
+<pre><code class="language-c#">// VEX code
+// ----------------
+// pcopen(int opinput, string Pchannel, vector P, float radius, int maxpoints) 
+// pcnumfound(int handle) 返回 pcopen 查询找到的点数。
+
+int handle = pcopen(0, 'P', @P, 2.1, 10);
+
+if (pcnumfound(handle)&lt;5) {
+    removepoint(0, @ptnum);
+}
+</code></pre>
+<pre><code class="language-c#">// VEX code
+// ----------------
+// nearpoints(&lt;geometry&gt;geometry, vector pos, float maxdist)  所有最近的点列表
+
+int nearpts[] = nearpoints(0,@P,2.1);
+
+if (len(nearpts) &lt; 5){
+    removepoint(0, @ptnum);
+}
+</code></pre>
+<h2 id="_7">查找任意轴向重叠面</h2>
+<hr />
+<h3 id="_8">实现结果</h3>
+<p><img alt="" src="imgs/01_004.png" />
+<center style="font-size:10px;color:#C0C0C0;text-decoration:underline">删除绿色面的重叠区域</center></p>
+<h3 id="_9">算法</h3>
+<pre><code class="language-c#">// VEX code
+// run over:primitives
+// ----------------
+// intersect(&lt;geometry&gt;geometry, vector orig, vector dir, vector pos, vector uvw) 
+// 此函数计算射线与面的第一个交点。返回整形值，找到返回面序号，没找到返回-1
+
+int pts[];
+vector pos = {0,0,0};
+vector pv,uvw;
+
+pts = primpoints(0, @primnum);
+foreach (int pt; pts){
+    pos += point(0, 'P', pt);
+}
+pos /= 4;
+
+// 用每个面的中心位置作为投射位置，投射方向{0，-10，0}
+int intersection = intersect(1, pos, {0,-10,0}, pv, uvw);
+if (intersection != -1) {
+    removeprim(0, @primnum, 1);
+}
+</code></pre>
+<h2 id="vex">VEX 自定义函数</h2>
+<hr />
+<pre><code class="language-c#">// 可以在当前的wrangle节点反复调用
+
+返回值类型 函数名(参数){
+    return aaa;
+}
+</code></pre>
+<pre><code class="language-c#">// 定义一个可以返回面中点位置的函数
+
+vector get_prim_center(int prim){
+    int points[] = primpoints(0, prim);
+    vector pos = {0,0,0};
+    foreach (int pt; points){
+        pos += point(0, 'P', pt);
+    }
+    vector center = pos /4;
+    return center;
+}
+</code></pre>
+<h2 id="_10">提取指定面</h2>
+<hr />
+<h3 id="_11">实现结果</h3>
+<p><img alt="" src="imgs/01_007.png" />
+<center style="font-size:10px;color:#C0C0C0;text-decoration:underline">所有面必须连接，获取阴影区域面</center></p>
+<h3 id="_12">算法</h3>
+<p>类似上面提取点的思路，找到每个面的相邻面，根据相邻面个数可提取想要的面</p>
+<blockquote>
+<p>注意：</p>
+<p>相邻面是指共享边的面，只共享点的不算相邻面</p>
+<p>4号面相邻 [2 3 5 8]</p>
+<p>8号面相邻 [4 7 9]</p>
+<p>11号面相邻 [9]</p>
+</blockquote>
+<p><img alt="" src="imgs/01_008.png" /></p>
+<h4 id="-">原作者制作思路 - 比较绕</h4>
+<p>每个面4个点，每个点又被其他面共享。</p>
+<p><img alt="" src="imgs/01_009.png" /></p>
+<p>这里用4号面举例</p>
+<ol>
+<li>4号面的4个点是a,b,c,d</li>
+<li>a的共享面是[3,4,7,8] ，b的共享面是[4,5,8,9]，c的共享面是[1,2,3,4]，d的共享面是[2,4,5]</li>
+<li>因为4是自身面，在这里吧4剔除，[3,7,8,5,8,9,1,2,3,2,5]</li>
+<li>出现2次的面是[2,3,5,8]</li>
+</ol>
+<p>这样就能提取出相邻面的列表，如果列表只有1个元素，就是我们要找的单独面</p>
+<pre><code class="language-c#">// VEX code
+// run over:primitives
+// ----------------
+// primpoints(&lt;geometry&gt;geometry, int primnum)  返回面上的点列表。
+// pointprims(&lt;geometry&gt;geometry, int ptnum)  返回点的面列表。
+
+int pts[] = primpoints(0, @primnum);
+
+int neighs_pcheck[],neighs_all[];
+
+foreach (int pt; pts){
+    neighs_pcheck = pointprims(0, pt);
+    append(neighs_all, neighs_pcheck);
+}
+
+int max = max(neighs_all);
+int found;
+int neighs_prims[];
+for (int i = 0; i &lt;= max; ++i){
+    found = 0;
+    if (i != @primnum) {
+        foreach (int pr; neighs_all){
+            if (pr == i) {
+                found++;
+            }
+        }
+
+        if (found &gt; 0 &amp;&amp; found%2==0 ) {
+            append(neighs_prims, i);
+        }
+    }    
+}
+</code></pre>
+<h4 id="vex-polyneighbours">vex polyneighbours</h4>
+<p>这样只用1行就能找到所有相邻面列表</p>
+<pre><code class="language-c#">// VEX code
+// run over:primitives
+// ----------------
+// polyneighbours(&lt;geometry&gt;geometry, int primnum)
+// 返回多边形的相邻面序号数组。
+
+int neigh_prims[] = polyneighbours(0,@primnum);
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js" defer></script>
+        <script src="search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.2.1
+Build Date UTC : 2021-07-16 07:37:31.272449+00:00
+-->
