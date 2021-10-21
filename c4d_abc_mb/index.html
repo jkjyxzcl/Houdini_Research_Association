@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://example.com/lakehouse04/">
+        <link rel="canonical" href="https://example.com/c4d_abc_mb/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>04.VEX 自定义函数 - jkbiji</title>
+        <title>abc运动模糊 - jkbiji</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -38,7 +38,7 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">首页</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FPWORK <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -65,7 +65,7 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../c4d_abc_mb/" class="dropdown-item">abc运动模糊</a>
+    <a href="./" class="dropdown-item active">abc运动模糊</a>
 </li>
             
 <li>
@@ -89,7 +89,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">教程笔记 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -114,7 +114,7 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">04.VEX 自定义函数</a>
+    <a href="../lakehouse04/" class="dropdown-item">04.VEX 自定义函数</a>
 </li>
             
 <li>
@@ -139,12 +139,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../lakehouse03/" class="nav-link">
+                                <a rel="prev" href="../hou_shelf/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../lakehouse05/" class="nav-link">
+                                <a rel="next" href="../c4d_vdb/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -166,8 +166,24 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#vex" class="nav-link">VEX 自定义函数</a>
+            <li class="nav-item" data-level="1"><a href="#abc" class="nav-link">abc运动模糊渲染</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#abc_1" class="nav-link">导入abc</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#rs" class="nav-link">添加rs物体标签</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">渲染设置</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">关闭角色运动模糊</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -175,26 +191,26 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="vex">VEX 自定义函数</h2>
+<h1 id="abc">abc运动模糊渲染</h1>
 <hr />
-<pre><code class="language-c#">// 可以在当前的wrangle节点反复调用
-
-返回值类型 函数名(参数){
-    return aaa;
-}
-</code></pre>
-<pre><code class="language-c#">// 定义一个可以返回面中点位置的函数
-
-vector get_prim_center(int prim){
-    int points[] = primpoints(0, prim);
-    vector pos = {0,0,0};
-    foreach (int pt; points){
-        pos += point(0, 'P', pt);
-    }
-    vector center = pos /4;
-    return center;
-}
-</code></pre></div>
+<p><strong>测试版本，houdini18.5 , c4d r21 , redshift 3.0.50</strong></p>
+<h2 id="abc_1">导入abc</h2>
+<p><img alt="" src="../imgs/rs_blur_04.png" /></p>
+<h2 id="rs">添加rs物体标签</h2>
+<ul>
+<li>
+<p>abc右键 - redshift Tags - Redshift Object</p>
+</li>
+<li>
+<p>把速度0 1 2 分别拖到xyz里面，采样以秒为单位 </p>
+</li>
+</ul>
+<p><img alt="" src="../imgs/rs_blur_02.PNG" /></p>
+<h2 id="_1">渲染设置</h2>
+<p>注意注意打开变形采样</p>
+<p><img alt="" src="../imgs/rs_blur_01.PNG" /></p>
+<h2 id="_2">关闭角色运动模糊</h2>
+<p><img alt="" src="../imgs/rs_blur_03.PNG" /></p></div>
             </div>
         </div>
 

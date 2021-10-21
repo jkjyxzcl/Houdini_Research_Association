@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://example.com/lakehouse04/">
+        <link rel="canonical" href="https://example.com/hou_shelf/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>04.VEX 自定义函数 - jkbiji</title>
+        <title>shelf - jkbiji</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -38,7 +38,7 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">首页</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FPWORK <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -55,7 +55,7 @@
 </li>
             
 <li>
-    <a href="../hou_shelf/" class="dropdown-item">shelf</a>
+    <a href="./" class="dropdown-item active">shelf</a>
 </li>
     </ul>
   </li>
@@ -89,7 +89,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">教程笔记 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -114,7 +114,7 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">04.VEX 自定义函数</a>
+    <a href="../lakehouse04/" class="dropdown-item">04.VEX 自定义函数</a>
 </li>
             
 <li>
@@ -139,12 +139,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../lakehouse03/" class="nav-link">
+                                <a rel="prev" href="../hou_py/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../lakehouse05/" class="nav-link">
+                                <a rel="next" href="../c4d_abc_mb/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -166,8 +166,32 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#vex" class="nav-link">VEX 自定义函数</a>
+            <li class="nav-item" data-level="1"><a href="#code" class="nav-link">code</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#open-hip-folder" class="nav-link">open hip folder</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#batch-load-abc" class="nav-link">Batch Load ABC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#merge-abc" class="nav-link">Merge ABC</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#out-cache" class="nav-link">Out Cache</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#cleanproj" class="nav-link">CleanProj</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pycharm" class="nav-link">PyCharm</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -175,25 +199,43 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="vex">VEX 自定义函数</h2>
+<h1 id="code">code</h1>
 <hr />
-<pre><code class="language-c#">// 可以在当前的wrangle节点反复调用
-
-返回值类型 函数名(参数){
-    return aaa;
-}
+<h2 id="open-hip-folder">open hip folder</h2>
+<pre><code class="language-python">from imp import reload
+from keysTool import keyTools
+reload(keyTools)
+keyTools.openFolder()
 </code></pre>
-<pre><code class="language-c#">// 定义一个可以返回面中点位置的函数
+<h2 id="batch-load-abc">Batch Load ABC</h2>
+<pre><code class="language-python">from imp import reload
+from keysTool import keyTools
+reload(keyTools)
+keyTools.abcBatchImport()
+</code></pre>
+<h2 id="merge-abc">Merge ABC</h2>
+<pre><code class="language-python">from imp import reload
+from keysTool import keyTools
+reload(keyTools)
+keyTools.geoMerge()
+</code></pre>
+<h2 id="out-cache">Out Cache</h2>
+<pre><code class="language-python">from imp import reload
+from keysTool import keyTools
+reload(keyTools)
+keyTools.cacheExport()
+</code></pre>
+<h2 id="cleanproj">CleanProj</h2>
+<pre><code class="language-python">from imp import reload
+from keysTool import keyTools
+reload(keyTools)
+keyTools.cleanProj()
+</code></pre>
+<h2 id="pycharm">PyCharm</h2>
+<pre><code class="language-python">import hrpyc
+hrpyc.start_server()
 
-vector get_prim_center(int prim){
-    int points[] = primpoints(0, prim);
-    vector pos = {0,0,0};
-    foreach (int pt; points){
-        pos += point(0, 'P', pt);
-    }
-    vector center = pos /4;
-    return center;
-}
+print('server is running!')
 </code></pre></div>
             </div>
         </div>

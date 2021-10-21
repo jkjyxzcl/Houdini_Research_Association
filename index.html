@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://example.com/">
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>胡学研究协会</title>
+        <title>jkbiji</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <body class="homepage">
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">胡学研究协会</a>
+                <a class="navbar-brand" href=".">jkbiji</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -38,8 +38,56 @@
                             <li class="navitem active">
                                 <a href="." class="nav-link">首页</a>
                             </li>
-                            <li class="navitem">
-                                <a href="about/" class="nav-link">测试页</a>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FPWORK <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Houdini</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="hou_env/" class="dropdown-item">houdini env</a>
+</li>
+            
+<li>
+    <a href="hou_py/" class="dropdown-item">pycode</a>
+</li>
+            
+<li>
+    <a href="hou_shelf/" class="dropdown-item">shelf</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">C4D</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="c4d_abc_mb/" class="dropdown-item">abc运动模糊</a>
+</li>
+            
+<li>
+    <a href="c4d_vdb/" class="dropdown-item">VDB渲染</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">maya</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="maya_py/" class="dropdown-item">pycode</a>
+</li>
+            
+<li>
+    <a href="maya_shelf/" class="dropdown-item">shelf</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">教程笔记 <b class="caret"></b></a>
@@ -96,7 +144,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="about/" class="nav-link">
+                                <a rel="next" href="hou_env/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -117,38 +165,27 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">胡学研究协会</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">人才培养</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">精神文化</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="_1">胡学研究协会</h1>
-<p>中国胡学研究学会（Chinese Houdini Research Association，C-HRA）成立于2021年7月16日，
-是由胡学研究技术协会主管，是中国从事材胡学技术研究和产业的搬砖工作者和单位，
-自愿结合并依法成立的全国性、非营利性混子社会团体。</p>
-<h2 id="_2">人才培养</h2>
-<p>让搬砖的同志学会比例@！</p>
-<h2 id="_3">精神文化</h2>
-<p>让搬砖的同志每天多点摸鱼时间。</p></div>
+<p>graph TB
+    Start(开始) --&gt; Open[打开冰箱门]
+    Open --&gt; Put[把大象放进去]
+    Put[把大象放进去] --&gt; IsFit{"冰箱小不小？"}</p>
+<pre><code>IsFit --&gt;|不小| Close[把冰箱门关上]
+Close --&gt; End(结束)
+
+IsFit --&gt;|小| Change[换个大冰箱]
+Change --&gt; Open
+</code></pre></div>
             </div>
         </div>
 
         <footer class="col-md-12">
             <hr>
-            <p>Documentation built with <a href="https://www.mkdocs.org/">Plus75</a>.</p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
             var base_url = ".",
@@ -223,5 +260,5 @@
 
 <!--
 MkDocs version : 1.2.1
-Build Date UTC : 2021-07-16 11:19:48.230161+00:00
+Build Date UTC : 2021-10-21 08:03:34.900123+00:00
 -->

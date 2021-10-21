@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/hou_py/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>pycode - jkbiji</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/python.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/c#.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">jkbiji</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">首页</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FPWORK <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">Houdini</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../hou_env/" class="dropdown-item">houdini env</a>
+</li>
+            
+<li>
+    <a href="./" class="dropdown-item active">pycode</a>
+</li>
+            
+<li>
+    <a href="../hou_shelf/" class="dropdown-item">shelf</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">C4D</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../c4d_abc_mb/" class="dropdown-item">abc运动模糊</a>
+</li>
+            
+<li>
+    <a href="../c4d_vdb/" class="dropdown-item">VDB渲染</a>
+</li>
+    </ul>
+  </li>
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">maya</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../maya_py/" class="dropdown-item">pycode</a>
+</li>
+            
+<li>
+    <a href="../maya_shelf/" class="dropdown-item">shelf</a>
+</li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">教程笔记 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">程序化木屋</a>
+    <ul class="dropdown-menu">
+            
+  <li class="dropdown-submenu">
+    <a href="#" class="dropdown-item">volume1</a>
+    <ul class="dropdown-menu">
+            
+<li>
+    <a href="../lakehouse01/" class="dropdown-item">01.点的分布算法</a>
+</li>
+            
+<li>
+    <a href="../lakehouse02/" class="dropdown-item">02.获取内部点</a>
+</li>
+            
+<li>
+    <a href="../lakehouse03/" class="dropdown-item">03.查找任意轴向重叠面</a>
+</li>
+            
+<li>
+    <a href="../lakehouse04/" class="dropdown-item">04.VEX 自定义函数</a>
+</li>
+            
+<li>
+    <a href="../lakehouse05/" class="dropdown-item">05.提取指定面</a>
+</li>
+            
+<li>
+    <a href="../lakehouse06/" class="dropdown-item">06.随机合并面</a>
+</li>
+    </ul>
+  </li>
+    </ul>
+  </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../hou_env/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../hou_shelf/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#code" class="nav-link">Code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="code">Code</h1>
+<hr />
+<pre><code class="language-python"># ..\Documents\houdini18.5\scripts\python\keysTool
+
+import hou
+import os
+import toolutils,nodesearch
+
+def rigHide(node):
+    for child in node.children():
+        if 'rig' in child.name():
+            child.setDisplayFlag(0)
+            break
+        else:
+            rigHide(child)
+
+def openFolder():
+    file_path = hou.getenv('HIP')
+    # print(file_path)
+    os.startfile(file_path)
+
+def createAbcNode(path, name):
+    abcNode = hou.node('/obj/').createNode('alembicarchive',name.split('.')[0])
+    abcPath = os.path.join(path, name)
+    abcNode.parm('fileName').set(abcPath)
+    abcNode.parm('buildHierarchy').pressButton()
+    return abcNode
+
+def abcBatchImport():
+    selectFolder = hou.ui.selectFile('$HIP/', file_type=hou.fileType.Directory)
+    absHip = hou.getenv('HIP')
+    # print(selectFolder)
+    # print(absHip)
+    absSelectFolder = selectFolder.replace('$HIP',absHip,1)
+    # print(absSelectFolder)
+    files = os.listdir(absSelectFolder)
+
+    nullNode = hou.node('/obj/').createNode('null')
+    nullNode.setDisplayFlag(0)
+    nullNode.parm('scale').set(0.01)
+    # nullNode.moveToGoodPosition()
+
+    for file in files:
+        # print(file)
+        if file.endswith('.abc'):
+            abcArchNode = createAbcNode(selectFolder, file)
+            rigHide(abcArchNode)
+            abcArchNode.setInput(0, nullNode)
+            # abcArchNode.moveToGoodPosition()
+
+    camNodes = toolutils.findAllChildNodesOfType(hou.node('/obj'),'cam',dorecurse=True)
+    if len(camNodes)&gt;0:
+        for camNode in camNodes:
+            camNode.parmTuple('res').set((1080,1080))
+
+    hou.node('/obj').layoutChildren()
+
+def cleanProj():
+    file_path = hou.getenv('HIP')
+    folders = os.listdir(file_path)
+    print(folders)
+
+def geoMerge():
+    geo = hou.selectedNodes()
+    num = len(geo)
+    res = hou.ui.readInput(&quot;Enter Name:&quot;)
+
+    tmpNodeName = &quot;Merge_&quot; + res[1] 
+    mergeGeo = hou.node(&quot;/obj&quot;).createNode(&quot;geo&quot;,tmpNodeName)
+
+    mergeGeo.setColor(hou.Color((1.00, 0.98, 0.67)))
+    mergeGeo.moveToGoodPosition()
+
+    objMerge = mergeGeo.createNode(&quot;object_merge&quot;)
+
+    objMerge.parm(&quot;numobj&quot;).set(num)
+
+    objMerge.parm('xformtype').set(1)
+
+    if num&gt;0:
+
+        for i in range(num):
+            tmpName = &quot;objpath&quot; + str(i+1)
+
+            tmpPath = geo[i].path()
+
+            objMerge.parm(tmpName).set(tmpPath)
+
+            # print tmpPath
+        hou.ui.displayMessage(&quot;success!!!&quot;)
+    else :
+        hou.ui.displayMessage(&quot;please select something!&quot;)
+
+def cacheExport():
+    selNodes = hou.selectedNodes()
+    tmp_color = hou.Color((.2, 0.63, 0))
+
+    cache_type_list = ['bgeo.sc', 'vdb', 'abc']
+
+    if len(selNodes) &gt; 0:   
+
+        user_select_type = hou.ui.displayCustomConfirmation('@@@ Please Select Cache Type: @@@', buttons=('Bgeo', 'Vdb', 'Abc', '取消'), suppress=hou.confirmType.OverwriteFile)
+
+        # print(cache_type_list[user_select_type])
+
+        if user_select_type == 3:
+            exit
+        else:
+            selNode = selNodes[0]
+            tmp_pos = selNode.position()
+            # print tmp_pos
+
+            parNode = selNode.parent()    
+            name_matcher = nodesearch.Name(&quot;OUT_GEO_cache&quot;)  
+            tmp_match = name_matcher.nodes(parNode)
+
+            if len(tmp_match)&gt;0:
+                tmpRop = hou.node(parNode.path() + &quot;/OUT_GEO_cache&quot;)
+            else:
+                tmpRop = parNode.createNode(&quot;ropnet&quot;,&quot;OUT_GEO_cache&quot;)
+                tmpRop.moveToGoodPosition()
+
+            res = hou.ui.readInput(&quot;Enter Node Name :&quot;)
+
+            if user_select_type == 0:
+                tmpNodeName = &quot;OUT_&quot; + res[1]     
+                tmpNull = parNode.createNode(&quot;null&quot;,tmpNodeName)    
+                tmpNull.setInput(0,selNode)
+                tmpNull.setPosition((tmp_pos[0],tmp_pos[1]-2))
+
+                tmpRopGeo = tmpRop.createNode(&quot;geometry&quot;,tmpNodeName)
+                tmpRopGeo.parm(&quot;trange&quot;).set(1)
+
+                tmpRopGeo.parm(&quot;soppath&quot;).set('../../$OS')
+                tmpsopoutput = &quot;$HIP/geo/$OS/$OS.$F4.&quot; + cache_type_list[user_select_type]
+                tmpRopGeo.parm(&quot;sopoutput&quot;).set(tmpsopoutput)
+                # tmpRopGeo.parm(&quot;sopoutput&quot;).set(tmpRopGeo_soppath)
+
+                tmpRopGeo.moveToGoodPosition()
+                p1 = tmpRopGeo.parm(&quot;sopoutput&quot;)
+
+                tmp_file = parNode.createNode(&quot;file&quot;)
+
+                tmp_file.setPosition((tmp_pos[0],tmp_pos[1]-4))
+                tmp_file.parm(&quot;file&quot;).set(p1)
+                tmp_file.parm(&quot;missingframe&quot;).set(1)
+
+                tmpRopGeo.setColor(tmp_color)
+                tmpNull.setColor(tmp_color)
+                tmp_file.setColor(tmp_color) 
+
+            elif user_select_type == 1:
+
+                # 缓存流程
+
+                # 创建volumeresample节点
+                tmpVolResample = parNode.createNode(&quot;volumeresample&quot;)
+                tmpVolResample.parm('group').set('@name=vel.*')
+                tmpVolResample.parm('scale').set(.5)
+                tmpVolResample.setInput(0,selNode)
+                tmpVolResample.setPosition((tmp_pos[0],tmp_pos[1]-2))
+                # 创建ConvertVDB节点
+                tmpConvertVDB = parNode.createNode(&quot;convertvdb&quot;)
+                tmpConvertVDB.parm('conversion').set(1)
+                tmpConvertVDB.setInput(0,tmpVolResample)
+                tmpConvertVDB.setPosition((tmp_pos[0],tmp_pos[1]-4))
+                # 创建transform节点
+                tmpTrans = parNode.createNode(&quot;xform&quot;)
+                tmpTrans.parm('scale').set(100)
+                tmpTrans.setInput(0,tmpConvertVDB)
+                tmpTrans.setPosition((tmp_pos[0],tmp_pos[1]-6))
+                # 创建volumewrangle节点
+                tmpVolWrangle = parNode.createNode(&quot;volumewrangle&quot;)
+                tmpVolWrangle.parm('snippet').set('@density *= 1; \nv@vel *= 1;')
+                tmpVolWrangle.setInput(0,tmpTrans)
+                tmpVolWrangle.setPosition((tmp_pos[0],tmp_pos[1]-8))
+                # 创建pyropostprocess节点
+                tmpPyroPostProcess = parNode.createNode(&quot;pyropostprocess&quot;)
+                tmpPyroPostProcess.parm('dolook').set(0)
+                tmpPyroPostProcess.setInput(0,tmpVolWrangle)
+                tmpPyroPostProcess.setPosition((tmp_pos[0],tmp_pos[1]-10))
+                # 创建NULL节点
+                tmpNodeName = &quot;VDB_&quot; + res[1]     
+                tmpNull = parNode.createNode(&quot;null&quot;,tmpNodeName)    
+                tmpNull.setInput(0,tmpPyroPostProcess)
+                tmpNull.setPosition((tmp_pos[0],tmp_pos[1]-12))
+                # 创建ROP 写VDB缓存节点        
+                tmpRopGeo = tmpRop.createNode(&quot;geometry&quot;,tmpNodeName)
+                tmpRopGeo.parm(&quot;trange&quot;).set(1)
+
+                tmpRopGeo.parm(&quot;soppath&quot;).set('../../$OS')
+                tmpsopoutput = &quot;$HIP/Cache/$OS/$OS.$F4.&quot; + cache_type_list[user_select_type]
+                tmpRopGeo.parm(&quot;sopoutput&quot;).set(tmpsopoutput)
+                # tmpRopGeo.parm(&quot;sopoutput&quot;).set(tmpRopGeo_soppath)       labs::csv_exporter        
+
+                p1 = tmpRopGeo.parm(&quot;sopoutput&quot;)
+                # 创建读缓存节点   
+                tmp_file = parNode.createNode(&quot;file&quot;)       
+                tmp_file.setPosition((tmp_pos[0],tmp_pos[1]-14))
+                tmp_file.parm(&quot;file&quot;).set(p1)
+                tmp_file.parm(&quot;missingframe&quot;).set(1)
+
+                # Csv流程
+
+                tmpPromote = parNode.createNode(&quot;attribpromote&quot;)  
+                tmpPromote.parm('inname').set('name minimum maximum')  
+                tmpPromote.parm('inclass').set(1)  
+                tmpPromote.parm('method').set(8)  
+                tmpPromote.setInput(0,tmpPyroPostProcess)
+                tmpPromote.setPosition((tmp_pos[0]+2,tmp_pos[1]-12))
+
+                tmpCsvNodeName = &quot;VDB_&quot; + res[1] + '_iofo'  
+                tmpCsvNull = parNode.createNode(&quot;null&quot;,tmpCsvNodeName)    
+                tmpCsvNull.setInput(0,tmpPromote)
+                tmpCsvNull.setPosition((tmp_pos[0]+2,tmp_pos[1]-14))
+
+                tmpRopCsv = tmpRop.createNode('labs::csv_exporter', tmpCsvNodeName)
+                tmpRelCsvPath = '../../'+tmpCsvNodeName
+                tmpRopCsv.parm('export_node').set(tmpRelCsvPath)
+                tmpRopCsv.parm('csv_path').set(&quot;$HIP/Cache/$OS.csv&quot;)
+                tmpRopCsv.parm('bFilteredExport').set(1)
+                tmpRopCsv.parm('mAttributes').set(3)
+                tmpRopCsv.parm('sAttribute1').set('name')
+                tmpRopCsv.parm('sAttribute2').set('minimum')
+                tmpRopCsv.parm('sAttribute3').set('maximum')
+
+                # 后处理
+                tmpRopGeo.moveToGoodPosition()
+                tmpRopCsv.moveToGoodPosition()
+                tmpRopGeo.setColor(tmp_color)
+                tmpNull.setColor(tmp_color)
+                tmpCsvNull.setColor(tmp_color)
+                tmp_file.setColor(tmp_color) 
+
+            elif user_select_type == 2:
+
+                # 缓存流程
+
+                # 创建Convert节点
+                abcConvert = parNode.createNode(&quot;convert&quot;)
+                abcConvert.setInput(0,selNode)
+                abcConvert.setPosition((tmp_pos[0],tmp_pos[1]-2))
+
+                # 创建transform节点
+                abcTrans = parNode.createNode(&quot;xform&quot;)
+                abcTrans.parm('scale').set(100)
+                abcTrans.setInput(0,abcConvert)
+                abcTrans.setPosition((tmp_pos[0],tmp_pos[1]-4))
+                # 创建attribwrangle节点
+                abcWrangle = parNode.createNode(&quot;attribwrangle&quot;)
+                abcWrangle.parm('class').set(1)
+                abcWrangleTmp = 's@path = &quot;/{}/{}&quot;;'.format(res[1] ,res[1] )
+                abcWrangle.parm('snippet').set(abcWrangleTmp)
+                abcWrangle.setInput(0,abcTrans)
+                abcWrangle.setPosition((tmp_pos[0],tmp_pos[1]-6))
+                # 创建attribdelete节点
+                abcClean = parNode.createNode(&quot;clean&quot;)
+                abcClean.parm('dodelattribs').set(1)
+                abcClean.parm('dodelgroups').set(1)
+                abcClean.parm('delattribs').set('* ^v ^path ^speed ^vorticity ^mask ^uv')
+                abcClean.parm('delgroups').set('* ^inside ^outside')
+                abcClean.setInput(0,abcWrangle)
+                abcClean.setPosition((tmp_pos[0],tmp_pos[1]-8))
+                # 创建NULL节点
+                abcNodeName = &quot;ABC_&quot; + res[1]     
+                abcNull = parNode.createNode(&quot;null&quot;,abcNodeName)    
+                abcNull.setInput(0,abcClean)
+                abcNull.setPosition((tmp_pos[0],tmp_pos[1]-10))
+                # 创建ROP 写VDB缓存节点        
+                abcRopGeo = tmpRop.createNode(&quot;alembic&quot;,abcNodeName)
+                abcRopGeo.parm(&quot;trange&quot;).set(1)
+                abcRopGeo.parm(&quot;use_sop_path&quot;).set(1)
+                abcRopGeo.parm(&quot;build_from_path&quot;).set(1)
+                abcRopGeo.parm(&quot;sop_path&quot;).set('../../$OS')
+                abcsopoutput = &quot;$HIP/Cache/$OS/$OS.&quot; + cache_type_list[user_select_type]
+                abcRopGeo.parm(&quot;filename&quot;).set(abcsopoutput)     
+
+                p1 = abcRopGeo.parm(&quot;filename&quot;)
+                # 创建读缓存节点   
+                tmp_file = parNode.createNode(&quot;alembic&quot;)       
+                tmp_file.setPosition((tmp_pos[0],tmp_pos[1]-12))
+                tmp_file.parm(&quot;fileName&quot;).set(p1)
+                tmp_file.parm(&quot;missingfile&quot;).set(1)
+
+                # Csv流程
+
+                tmpPromote = parNode.createNode(&quot;attribpromote&quot;)  
+                tmpPromote.parm('inname').set('speed vorticity')  
+                tmpPromote.parm('outclass').set(0)  
+                tmpPromote.parm('method').set(0)  
+                tmpPromote.setInput(0,abcTrans)
+                tmpPromote.setPosition((tmp_pos[0]+2,tmp_pos[1]-6))
+
+                tmpPromote2 = parNode.createNode(&quot;attribpromote&quot;)  
+                tmpPromote2.parm('inname').set('speed vorticity')  
+                tmpPromote2.parm('inclass').set(0)  
+                tmpPromote2.parm('method').set(0)  
+                tmpPromote2.setInput(0,tmpPromote)
+                tmpPromote2.setPosition((tmp_pos[0]+2,tmp_pos[1]-8))
+
+                abcPack = parNode.createNode(&quot;pack&quot;)  
+                abcPack.parm('transfer_attributes').set('speed vorticity')  
+                abcPack.setInput(0,tmpPromote2)
+                abcPack.setPosition((tmp_pos[0]+2,tmp_pos[1]-10))
+
+                tmpCsvNodeName = abcNodeName + '_iofo'  
+                tmpCsvNull = parNode.createNode(&quot;null&quot;,tmpCsvNodeName)    
+                tmpCsvNull.setInput(0,abcPack)
+                tmpCsvNull.setPosition((tmp_pos[0]+2,tmp_pos[1]-12))
+
+                tmpRopCsv = tmpRop.createNode('labs::csv_exporter', tmpCsvNodeName)
+                tmpRelCsvPath = '../../'+tmpCsvNodeName
+                tmpRopCsv.parm('export_node').set(tmpRelCsvPath)
+                tmpRopCsv.parm('csv_path').set(&quot;$HIP/Cache/$OS.csv&quot;)
+                tmpRopCsv.parm('bFilteredExport').set(1)
+                tmpRopCsv.parm('mAttributes').set(2)
+                tmpRopCsv.parm('sAttribute1').set('vorticity')
+                tmpRopCsv.parm('sAttribute2').set('speed')
+
+                # 后处理
+                abcRopGeo.moveToGoodPosition()
+                tmpRopCsv.moveToGoodPosition()
+                abcRopGeo.setColor(tmp_color)
+                abcNull.setColor(tmp_color)
+                tmpCsvNull.setColor(tmp_color)
+                tmp_file.setColor(tmp_color) 
+
+
+    else:
+        hou.ui.displayMessage(&quot;@@@  please select a NODE  @@@&quot;)
+
+
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

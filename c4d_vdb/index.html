@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://example.com/lakehouse04/">
+        <link rel="canonical" href="https://example.com/c4d_vdb/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>04.VEX 自定义函数 - jkbiji</title>
+        <title>VDB渲染 - jkbiji</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -38,7 +38,7 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">首页</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FPWORK <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -69,7 +69,7 @@
 </li>
             
 <li>
-    <a href="../c4d_vdb/" class="dropdown-item">VDB渲染</a>
+    <a href="./" class="dropdown-item active">VDB渲染</a>
 </li>
     </ul>
   </li>
@@ -89,7 +89,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">教程笔记 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -114,7 +114,7 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">04.VEX 自定义函数</a>
+    <a href="../lakehouse04/" class="dropdown-item">04.VEX 自定义函数</a>
 </li>
             
 <li>
@@ -139,12 +139,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../lakehouse03/" class="nav-link">
+                                <a rel="prev" href="../c4d_abc_mb/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../lakehouse05/" class="nav-link">
+                                <a rel="next" href="../maya_py/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -166,8 +166,41 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#vex" class="nav-link">VEX 自定义函数</a>
+            <li class="nav-item" data-level="1"><a href="#vdb" class="nav-link">VDB渲染</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_1" class="nav-link">简单介绍</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">常用场</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">烟雾渲染</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_6" class="nav-link">火焰渲染</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_8" class="nav-link">小技巧</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#vdb_1" class="nav-link">VDB运动模糊</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_9" class="nav-link">渲染设置开启</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#vdb_2" class="nav-link">VDB设置</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -175,26 +208,82 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="vex">VEX 自定义函数</h2>
+<h1 id="vdb">VDB渲染</h1>
 <hr />
-<pre><code class="language-c#">// 可以在当前的wrangle节点反复调用
-
-返回值类型 函数名(参数){
-    return aaa;
-}
-</code></pre>
-<pre><code class="language-c#">// 定义一个可以返回面中点位置的函数
-
-vector get_prim_center(int prim){
-    int points[] = primpoints(0, prim);
-    vector pos = {0,0,0};
-    foreach (int pt; points){
-        pos += point(0, 'P', pt);
-    }
-    vector center = pos /4;
-    return center;
-}
-</code></pre></div>
+<h2 id="_1">简单介绍</h2>
+<p>vdb是一种体积数据类型，梦工厂开发的。</p>
+<p>vdb中存储的数据一般叫作 <strong><code>场（field）</code></strong> 或者 <strong><code>通道（channel）</code></strong></p>
+<p><img alt="" src="../imgs/vdb_01.png" /></p>
+<blockquote>
+<p>注意：</p>
+<p>在C4D中导入体积后，如果channel为空，体积就是有问题的</p>
+</blockquote>
+<h2 id="_2">常用场</h2>
+<p><img alt="" src="../imgs/vdb_02.png" /></p>
+<p>不同的场可以理解成图片的RGB通道，记录的是不同信息而已。只不过图片用的二维平面的像素块记录颜色信息。VDB用的是三维空间的立体像素块记录体积信息。</p>
+<h3 id="density">density 密度场 ⭐</h3>
+<p>体积的厚度，density用于渲染烟雾。 </p>
+<h3 id="flame-temperature">flame 火焰场   temperature 温度场</h3>
+<p>flame和temperature用于渲染火和爆炸的燃烧区域，正常在渲染的时候更多的会选择flame控制火焰的自发光区域</p>
+<h3 id="vel">vel 矢量速度场</h3>
+<p>主要用于渲染烟雾的运动模糊，一般烟雾不需要渲染motion</p>
+<h2 id="_3">烟雾渲染</h2>
+<p>测试文件:<a href="https://artifacts.aswf.io/io/aswf/openvdb/models/bunny_cloud.vdb/1.0.0/bunny_cloud.vdb-1.0.0.zip">bunny_cloud.vdb</a></p>
+<h3 id="_4">灯光设置</h3>
+<p>渲染烟雾，需要把<strong>灯光的体积照明设置为1</strong></p>
+<p><img alt="" src="../imgs/vdb_03.png" /></p>
+<h3 id="_5">材质</h3>
+<p>烟雾渲染一般只需要density场，创建redshift的<code>volume</code>材质，在channel中选择<code>density</code></p>
+<p><img alt="" src="../imgs/vdb_04.png" /></p>
+<p>渲染烟，只需要关注<strong>scatter散射</strong> 和<strong>absorption吸收</strong></p>
+<ul>
+<li>scatter可以理解为漫反射，越大越亮</li>
+<li>absorption可以理解为透明，越大体积越厚</li>
+</ul>
+<p>增加scatter系数会使体积更亮。增加absorption系数会使体积更不透明。体积越不透明，穿过它的光就越少。换句话说，高吸收意味着体积变暗。</p>
+<p>如果想保持相同的近似强度，建议同时调整scatter系数和absorption系数。也就是说调节时候，同加同减。</p>
+<p><img alt="" src="../imgs/vdb_05.png" /></p>
+<p>Scatter Tint 来调整音量的整体颜色</p>
+<p><img alt="" src="../imgs/vdb_06.png" /></p>
+<h2 id="_6">火焰渲染</h2>
+<p>测试文件:<a href="https://artifacts.aswf.io/io/aswf/openvdb/models/fire.vdb/1.0.0/fire.vdb-1.0.0.zip">fire.vdb</a></p>
+<blockquote>
+<p>灯光同上设置</p>
+</blockquote>
+<h3 id="_7">材质</h3>
+<p>如果只渲染火，不渲染烟，scatter中的channel空白就行。</p>
+<p><img alt="" src="../imgs/vdb_08.png" /></p>
+<p>控制火焰就只需要把flame或者temperature场添加到<strong>Emission自发光</strong>的channel中。</p>
+<p><code>scale</code>控制整体亮度，<code>ramp</code>控制颜色过度</p>
+<p><img alt="" src="../imgs/vdb_09.png" /></p>
+<ul>
+<li>对于低温，使用黑色/灰色</li>
+<li>对于中等温度，使用红色</li>
+<li>对于更高的温度，请使用黄色/白色</li>
+</ul>
+<h2 id="_8">小技巧</h2>
+<p>不管是烟或者火焰在调节材质拉渐变的时候，不过是把<strong>一定范围区间的值映射到新的范围</strong></p>
+<p>这里拿密度举例：</p>
+<p><img alt="" src="../imgs/vdb_07.png" /></p>
+<p>如图，假如VDB中密度的范围是0-1，就相当于把<code>0-1</code>对应到了<code>紫-蓝</code>，这种情况是最理想的。</p>
+<blockquote>
+<p>注意</p>
+<p>在三维制作中，density或者flame场的大小范围不一定刚好都在0-1的区间范围，往往density和flame的最大值会大于1。</p>
+</blockquote>
+<p>这种情况下，就可以在材质<code>Advanced</code>标签中修改下对应场的最大值。</p>
+<p><img alt="" src="../imgs/vdb_10.png" /></p>
+<p>在导出VDB的时候会附带一个csv表格，记录有我们用到的density，flame，temperature场的最大值</p>
+<p><img alt="" src="../imgs/vdb_11.png" /></p>
+<ul>
+<li>一般在<code>densuity remap</code>的<code>old max</code>修改成表里的density最大值X100</li>
+<li><code>Emission remap</code>的<code>old max</code>修改成表里的flame最大值</li>
+</ul>
+<h1 id="vdb_1">VDB运动模糊</h1>
+<p>前提：导出的VDB含有速度场，目前不支持矢量的速度场</p>
+<h2 id="_9">渲染设置开启</h2>
+<p><img alt="" src="../imgs/vdb_12.png" /></p>
+<h2 id="vdb_2">VDB设置</h2>
+<p><img alt="" src="../imgs/vdb_13.png" /></p></div>
             </div>
         </div>
 

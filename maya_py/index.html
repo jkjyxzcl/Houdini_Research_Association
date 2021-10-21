@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://example.com/lakehouse04/">
+        <link rel="canonical" href="https://example.com/maya_py/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>04.VEX 自定义函数 - jkbiji</title>
+        <title>pycode - jkbiji</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -38,7 +38,7 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">首页</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">FPWORK <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -79,7 +79,7 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../maya_py/" class="dropdown-item">pycode</a>
+    <a href="./" class="dropdown-item active">pycode</a>
 </li>
             
 <li>
@@ -89,7 +89,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">教程笔记 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -114,7 +114,7 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">04.VEX 自定义函数</a>
+    <a href="../lakehouse04/" class="dropdown-item">04.VEX 自定义函数</a>
 </li>
             
 <li>
@@ -139,12 +139,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../lakehouse03/" class="nav-link">
+                                <a rel="prev" href="../c4d_vdb/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../lakehouse05/" class="nav-link">
+                                <a rel="next" href="../maya_shelf/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -166,7 +166,7 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#vex" class="nav-link">VEX 自定义函数</a>
+            <li class="nav-item" data-level="1"><a href="#code" class="nav-link">Code</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -175,25 +175,107 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="vex">VEX 自定义函数</h2>
+<h1 id="code">Code</h1>
 <hr />
-<pre><code class="language-c#">// 可以在当前的wrangle节点反复调用
+<pre><code class="language-python"># ..\Documents\maya\scripts
 
-返回值类型 函数名(参数){
-    return aaa;
-}
-</code></pre>
-<pre><code class="language-c#">// 定义一个可以返回面中点位置的函数
+import maya.cmds as cmds
+import os
 
-vector get_prim_center(int prim){
-    int points[] = primpoints(0, prim);
-    vector pos = {0,0,0};
-    foreach (int pt; points){
-        pos += point(0, 'P', pt);
-    }
-    vector center = pos /4;
-    return center;
-}
+def test():
+    sel_list = cmds.ls(sl=1)
+    shapes = cmds.listRelatives(sel_list[0])
+    for node in shapes:
+        name = '{}|{}'.format(sel_list[0],node)
+        if 'rig' in node:
+            cmds.hide( name)
+
+
+def make_folder(dir):
+    folder = os.path.exists(dir)
+
+    if folder:
+        pass
+    else:
+        os.makedirs(dir)
+    return dir
+
+def abcExport(dir,object,f1=1,f2=1):
+    print('start export {}'.format(object))
+
+    shapes = cmds.listRelatives(object)
+    # for node in shapes:
+    #     name = '{}|{}'.format(object,node)
+    #     if ':' in node:
+    #         current_name = node.split(':')[-1]
+    #         if 'rig' in current_name:
+    #             cmds.hide( name)
+    #     else:
+    #         if 'rig' in node:
+    #             cmds.hide( name)
+
+    if ':' in object:
+
+        for node in shapes:
+            full_name = '{}|{}'.format(object,node)
+            current_name = node.split(':')[-1]
+            if 'rig' in current_name:
+                cmds.hide(full_name)
+
+        name = object.split(':')[-1]
+        export_path = os.path.join(dir,'{}.abc'.format(name))
+        command = &quot;-frameRange {} {} -uvWrite -worldSpace -writeVisibility -writeUVSets -dataFormat hdf -root |{} -file {}&quot;.format(f1,f2,object,export_path)     
+        cmds.AbcExport(j=command)
+
+        for node in shapes:
+            full_name = '{}|{}'.format(object,node)
+            cmds.unhide(full_name)
+    else:
+        for node in shapes:
+            full_name = '{}|{}'.format(object,node)
+            if 'rig' in node:
+                cmds.hide( full_name)
+
+        export_path = os.path.join(dir,'{}.abc'.format(object))
+        command = &quot;-frameRange {} {} -uvWrite -worldSpace -writeVisibility -writeUVSets -dataFormat hdf -root |{} -file {}&quot;.format(f1,f2,object,export_path)                
+        cmds.AbcExport(j=command)
+
+        for node in shapes:
+            full_name = '{}|{}'.format(object,node)
+            cmds.unhide(full_name)
+
+def abcBatchExport():
+    file_path = cmds.file(q=True, sn=True)
+    file_dir = os.path.dirname(file_path)
+    file_name = os.path.basename(file_path)
+    raw_name, extension = os.path.splitext(file_name)
+    cache_dir = os.path.join(file_dir,'cache')
+    make_folder(cache_dir)
+    shot_cache_dir = os.path.join(cache_dir,raw_name)
+    make_folder(shot_cache_dir)
+
+    sel_list = cmds.ls(sl=1) # ,sn=True
+    for sel in sel_list:
+        abcExport(shot_cache_dir,sel)
+
+def abcAniBatchExport():
+    file_path = cmds.file(q=True, sn=True)
+    file_dir = os.path.dirname(file_path)
+    file_name = os.path.basename(file_path)
+    raw_name, extension = os.path.splitext(file_name)
+    cache_dir = os.path.join(file_dir,'cache')
+    make_folder(cache_dir)
+    shot_cache_dir = os.path.join(cache_dir,raw_name)
+    make_folder(shot_cache_dir)
+
+    f1 = cmds.playbackOptions(q=True, min=True)
+    f2 = cmds.playbackOptions(q=True, max=True)
+
+    sel_list = cmds.ls(sl=1) # ,sn=True
+    for sel in sel_list:
+        abcExport(shot_cache_dir,sel,f1,f2)
+
+
 </code></pre></div>
             </div>
         </div>
