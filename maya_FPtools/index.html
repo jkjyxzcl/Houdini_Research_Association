@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://example.com/lakehouse04/">
+        <link rel="canonical" href="https://example.com/maya_FPtools/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>04.VEX 自定义函数 - jkbiji</title>
+        <title>葫芦娃工具 - jkbiji</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -38,7 +38,7 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">首页</a>
                             </li>
-                            <li class="dropdown">
+                            <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">WorkTips <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -79,7 +79,7 @@
     <ul class="dropdown-menu">
             
 <li>
-    <a href="../maya_FPtools/" class="dropdown-item">葫芦娃工具</a>
+    <a href="./" class="dropdown-item active">葫芦娃工具</a>
 </li>
             
 <li>
@@ -93,7 +93,7 @@
   </li>
                                 </ul>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">教程笔记 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
@@ -118,7 +118,7 @@
 </li>
             
 <li>
-    <a href="./" class="dropdown-item active">04.VEX 自定义函数</a>
+    <a href="../lakehouse04/" class="dropdown-item">04.VEX 自定义函数</a>
 </li>
             
 <li>
@@ -143,12 +143,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../lakehouse03/" class="nav-link">
+                                <a rel="prev" href="../c4d_vdb/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../lakehouse05/" class="nav-link">
+                                <a rel="next" href="../maya_py/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -170,8 +170,16 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="2"><a href="#vex" class="nav-link">VEX 自定义函数</a>
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">葫芦娃工具使用</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#_2" class="nav-link">安装</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">更新</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -179,26 +187,22 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h2 id="vex">VEX 自定义函数</h2>
+<h1 id="_1">葫芦娃工具使用</h1>
 <hr />
-<pre><code class="language-c#">// 可以在当前的wrangle节点反复调用
-
-返回值类型 函数名(参数){
-    return aaa;
-}
+<h2 id="_2">安装</h2>
+<h3 id="updatefptoolspycusersadministratordocumentsmayascripts">复制<code>updateFPTools.py</code>到<code>C:\Users\Administrator\Documents\maya\scripts</code></h3>
+<p><a href="../files/updateFPTools.py">updateFPTools.py</a></p>
+<h3 id="_3">任意工具架上添加临时工具</h3>
+<pre><code class="language-python">import updateFPTools
+reload(updateFPTools)
+updateFPTools.update_tools()
 </code></pre>
-<pre><code class="language-c#">// 定义一个可以返回面中点位置的函数
-
-vector get_prim_center(int prim){
-    int points[] = primpoints(0, prim);
-    vector pos = {0,0,0};
-    foreach (int pt; points){
-        pos += point(0, 'P', pt);
-    }
-    vector center = pos /4;
-    return center;
-}
-</code></pre></div>
+<p>添加完成后点击该工具，会更新工具架和python代码</p>
+<h3 id="_4">加载工具架</h3>
+<p><img alt="" src="../imgs/huluwa_01.png" /></p>
+<h2 id="_5">更新</h2>
+<p><img alt="" src="../imgs/update.png" /></p>
+<p><strong>完成安装以后，点击宝葫芦，maya重启更新</strong></p></div>
             </div>
         </div>
 
