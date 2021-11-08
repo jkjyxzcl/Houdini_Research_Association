@@ -176,7 +176,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#_5" class="nav-link">更新</a>
+            <li class="nav-item" data-level="2"><a href="#_3" class="nav-link">更新</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -190,17 +190,27 @@
 <h1 id="_1">葫芦娃工具使用</h1>
 <hr />
 <h2 id="_2">安装</h2>
-<h3 id="updatefptoolspycusersadministratordocumentsmayascripts">复制<code>updateFPTools.py</code>到<code>C:\Users\Administrator\Documents\maya\scripts</code></h3>
+<ol>
+<li>复制<code>updateFPTools.py</code>到<code>C:\Users\Administrator\Documents\maya\scripts</code></li>
+</ol>
 <p><a href="../files/updateFPTools.py">updateFPTools.py</a></p>
-<h3 id="_3">任意工具架上添加临时工具</h3>
+<ol>
+<li>任意工具架上添加临时工具</li>
+</ol>
 <pre><code class="language-python">import updateFPTools
 reload(updateFPTools)
 updateFPTools.update_tools()
 </code></pre>
-<p>添加完成后点击该工具，会更新工具架和python代码</p>
-<h3 id="_4">加载工具架</h3>
+<ul>
+<li>
+<p>添加完成后点击该工具，maya会重启，同时会更新工具架和python代码</p>
+</li>
+<li>
+<p>加载工具架(如果之前已经有该工具架，可省略这一步，重启maya厚就可使用)</p>
+</li>
+</ul>
 <p><img alt="" src="../imgs/huluwa_01.png" /></p>
-<h2 id="_5">更新</h2>
+<h2 id="_3">更新</h2>
 <p><img alt="" src="../imgs/update.png" /></p>
 <p><strong>完成安装以后，点击宝葫芦，maya重启更新</strong></p></div>
             </div>
