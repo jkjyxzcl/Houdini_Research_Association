@@ -191,24 +191,24 @@
 <hr />
 <h2 id="_2">安装</h2>
 <ol>
-<li>复制<code>updateFPTools.py</code>到<code>C:\Users\Administrator\Documents\maya\scripts</code></li>
-</ol>
-<p><a href="../files/updateFPTools.py">updateFPTools.py</a></p>
-<ol>
-<li>任意工具架上添加临时工具</li>
-</ol>
-<pre><code class="language-python">import updateFPTools
-reload(updateFPTools)
-updateFPTools.update_tools()
-</code></pre>
-<ul>
 <li>
-<p>添加完成后点击该工具，maya会重启，同时会更新工具架和python代码</p>
+<p>复制<code>updateFPTools.py</code>到<code>C:\Users\Administrator\Documents\maya\scripts</code></p>
+<p><a href="../files/updateFPTools.py">updateFPTools.py</a></p>
+</li>
+<li>
+<p>任意工具架上添加临时工具</p>
+<p><code>python
+import updateFPTools
+reload(updateFPTools)
+updateFPTools.update_tools()</code></p>
+<ul>
+<li>添加完成后点击该工具，maya会重启，同时会更新工具架和python代码</li>
+</ul>
 </li>
 <li>
 <p>加载工具架(如果之前已经有该工具架，可省略这一步，重启maya厚就可使用)</p>
 </li>
-</ul>
+</ol>
 <p><img alt="" src="../imgs/huluwa_01.png" /></p>
 <h2 id="_3">更新</h2>
 <p><img alt="" src="../imgs/update.png" /></p>
